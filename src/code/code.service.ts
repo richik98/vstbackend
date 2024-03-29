@@ -11,7 +11,7 @@ export class CodeService {
 
     async validateCode(activationCode: string): Promise<boolean> {
         try {
-            const filePath = join(__dirname, 'verification_codes.json');
+            const filePath = "./verification_codes.json"
             const fileData = await fs.readFile(filePath, 'utf-8');
             const codes = JSON.parse(fileData).codes;
 
@@ -27,7 +27,7 @@ export class CodeService {
         try {
             const verificationCode = await this.generateVerificationCode();
 
-            const filePath = join(__dirname, 'verification_codes.json'); // Plural for multiple codes
+            const filePath = "./verification_codes.json" // Plural for multiple codes
 
             let codes = [];
             try {
