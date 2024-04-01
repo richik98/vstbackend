@@ -2,15 +2,15 @@ import { NestFactory } from '@nestjs/core';
 import { AppModule } from './app.module';
 import { SwaggerModule, DocumentBuilder } from '@nestjs/swagger';
 import * as https from 'https';
-import { promises as fs } from 'fs'; // Using promises for asynchronous approach
+import * as fs from 'fs';
 
 
 
 async function bootstrap() {
   const app = await NestFactory.create(AppModule, {
     httpsOptions: {
-      key: fs.readFile("/etc/letsencrypt/live/diamon-drush.io/privkey.pem"),
-      cert: fs.readFile("/etc/letsencrypt/live/diamon-drush.io/fullchain.pem")
+      key: fs.readFileSync("/etc/letsencrypt/live/diamon-drush.io/privkey.pem"),
+      cert: fs.readFileSync("/etc/letsencrypt/live/diamon-drush.io/fullchain.pem")
     }
   });
 
